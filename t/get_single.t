@@ -264,18 +264,18 @@ subtest( 'Package' => sub {
 
     my $int;
 
-    $int = $package->process_start();
+    $int = $package->processor_start();
     like(
         $int,
         qr/^[0-9]+$/xms,
-        "package->process_start() ($int)",
+        "package->processor_start() ($int)",
     );
 
-    $int = $package->process_count();
+    $int = $package->processor_count();
     like(
         $int,
         qr/^[0-9]+$/xms,
-        "package->process_count() ($int)",
+        "package->processor_count() ($int)",
     );
 
     $int = $package->core_start();
