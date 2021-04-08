@@ -72,23 +72,23 @@ package CPUInfo::FFI::Enum::Vendor {
 
     FFI::C->enum( 'cpuinfo_vendor' => [
         qw<
-	    unknown
-	    intel
-	    amd
-	    arm
-	    qualcomm
-	    apple
-	    samsung
-	    nvidia
-	    mips
-	    ibm
-	    ingenic
-	    via
-	    cavium
-	    broadcom
-	    apm
-	    huawei
-	    hygon
+        unknown
+        intel
+        amd
+        arm
+        qualcomm
+        apple
+        samsung
+        nvidia
+        mips
+        ibm
+        ingenic
+        via
+        cavium
+        broadcom
+        apm
+        huawei
+        hygon
         >,
 
         [ 'texas_instruments' => 30 ],
