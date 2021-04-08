@@ -233,13 +233,13 @@ package CPUInfo::FFI::Cache {
 
 package CPUInfo::FFI::Package {
     FFI::C->struct( 'cpuinfo_package' => [
-        '_name'         => 'record(48)', # CPUINFO_PACKAGE_NAME_MAX = 48
-        'process_start' => 'uint32',
-        'process_count' => 'uint32',
-        'core_start'    => 'uint32',
-        'core_count'    => 'uint32',
-        'cluster_start' => 'uint32',
-        'cluster_count' => 'uint32',
+        '_name'           => 'record(48)', # CPUINFO_PACKAGE_NAME_MAX = 48
+        'processor_start' => 'uint32',
+        'processor_count' => 'uint32',
+        'core_start'      => 'uint32',
+        'core_count'      => 'uint32',
+        'cluster_start'   => 'uint32',
+        'cluster_count'   => 'uint32',
     ]);
 
     sub name ($self) {
@@ -400,10 +400,6 @@ package CPUInfo::FFI::Processor {
     sub l4 ($self) {
         return $self->{'_l4'}
             //= $ffi->cast( 'opaque', 'cpuinfo_cache', $self->_l4() );
-    }
-
-    sub next ($self) {
-        return $ffi->cast( 'opaque', 'cpuinfo_processor', $self->{'ptr'} + 1 );
     }
 }
 
