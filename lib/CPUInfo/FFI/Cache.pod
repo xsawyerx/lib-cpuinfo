@@ -1,0 +1,61 @@
+# ABSTRACT: CPUInfo Cachel object
+
+=pod
+
+=head1 SYNOPSIS
+
+    my $index = 0;
+    my $cache = get_l1i_cache($index);
+    my $size  = $cache->size();
+    ...
+
+=head1 ATTRIBUTES
+
+=head2 C<size>
+
+    my $size = $cache->size();
+
+Returns an integer.
+
+=head2 C<associativity>
+
+    my $size = $cache->associativity();
+
+Returns an integer.
+
+=head2 C<sets>
+
+    my $size = $cache->sets();
+
+Returns an integer.
+
+=head2 C<partitions>
+
+    my $size = $cache->partitions();
+
+Returns an integer.
+
+=head2 C<line_size>
+
+    my $size = $cache->line_size();
+
+Returns an integer.
+
+=head2 C<flags>
+
+    my $size = $cache->flags();
+
+Returns an integer.
+
+=head2 C<processor_start>
+
+    my $size = $cache->processor_start();
+
+Returns an integer.
+
+=head2 C<processor_count>
+
+    my $size = $cache->processor_count();
+
+Returns an integer.
+

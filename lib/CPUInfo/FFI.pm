@@ -600,6 +600,8 @@ Return how many L4 caches there are.
 
 Return an arrayref of all the processor objects.
 
+See L<CPUInfo::FFI::Processor>.
+
 =head2 C<get_cores>
 
     foreach my $core ( get_cores()->@* ) {
@@ -607,6 +609,8 @@ Return an arrayref of all the processor objects.
     }
 
 Return an arrayref of all the core objects.
+
+See L<CPUInfo::FFI::Core>.
 
 =head2 C<get_clusters>
 
@@ -616,6 +620,8 @@ Return an arrayref of all the core objects.
 
 Return an arrayref of all the cluster objects.
 
+See L<CPUInfo::FFI::Cluster>.
+
 =head2 C<get_packages>
 
     foreach my $package ( get_packages()->@* ) {
@@ -623,6 +629,8 @@ Return an arrayref of all the cluster objects.
     }
 
 Return an arrayref of all the package objects.
+
+See L<CPUInfo::FFI::Package>.
 
 =head2 C<get_uarchs>
 
@@ -632,6 +640,8 @@ Return an arrayref of all the package objects.
 
 Return an arrayref of all the uarch objects.
 
+See L<CPUInfo::FFI::UArchInfo>.
+
 =head2 C<get_l1i_caches>
 
     foreach my $cache ( get_l1i_caches()->@* ) {
@@ -639,6 +649,8 @@ Return an arrayref of all the uarch objects.
     }
 
 Return an arrayref of all the L1i cache objects.
+
+See L<CPUInfo::FFI::Cache>.
 
 =head2 C<get_l1d_caches>
 
@@ -648,6 +660,8 @@ Return an arrayref of all the L1i cache objects.
 
 Return an arrayref of all the L1d cache objects.
 
+See L<CPUInfo::FFI::Cache>.
+
 =head2 C<get_l2_caches>
 
     foreach my $cache ( get_l2_caches()->@* ) {
@@ -655,6 +669,8 @@ Return an arrayref of all the L1d cache objects.
     }
 
 Return an arrayref of all the L2 cache objects.
+
+See L<CPUInfo::FFI::Cache>.
 
 =head2 C<get_l3_caches>
 
@@ -664,6 +680,8 @@ Return an arrayref of all the L2 cache objects.
 
 Return an arrayref of all the L3 cache objects.
 
+See L<CPUInfo::FFI::Cache>.
+
 =head2 C<get_l4_caches>
 
     foreach my $cache ( get_l4_caches()->@* ) {
@@ -672,45 +690,47 @@ Return an arrayref of all the L3 cache objects.
 
 Return an arrayref of all the L4 cache objects.
 
+See L<CPUInfo::FFI::Cache>.
+
 =head2 C<get_processor($index)>
 
-Return the processor at index C<$index>.
+Return the L<CPUInfo::FFI::Processor> processor object at index C<$index>.
 
 =head2 C<get_core($index)>
 
-Return the core at index C<$index>.
+Return the <CPUInfo::FFI::Core> core object at index C<$index>.
 
 =head2 C<get_cluster($index)>
 
-Return the cluster at index C<$index>.
+Return the L<CPUInfo::FFI::Cluster> cluster object at index C<$index>.
 
 =head2 C<get_package($index)>
 
-Return the package at index C<$index>.
+Return the L<CPUInfo::FFI::Package> package object at index C<$index>.
 
 =head2 C<get_uarch($index)>
 
-Return the UArch at index C<$index>.
+Return the L<CPUInfo::FFI::UArchInfo> uarch object at index C<$index>.
 
 =head2 C<get_l1i_cache($index)>
 
-Return the L1i cache at index C<$index>.
+Return the L<CPUInfo::FFI::Cache> L1i cache object at index C<$index>.
 
 =head2 C<get_l1d_cache($index)>
 
-Return the L1d cache at index C<$index>.
+Return the L<CPUInfo::FFI::Cache> L1d cache object at index C<$index>.
 
 =head2 C<get_l2_cache($index)>
 
-Return the L2 cache at index C<$index>.
+Return the L<CPUInfo::FFI::Cache> L2 cache object at index C<$index>.
 
 =head2 C<get_l3_cache($index)>
 
-Return the L3 cache at index C<$index>.
+Return the L<CPUInfo::FFI::Cache> L3 cache object at index C<$index>.
 
 =head2 C<get_l4_cache($index)>
 
-Return the L4 cache at index C<$index>.
+Return the L<CPUInfo::FFI::Cache> L4 cache object at index C<$index>.
 
 =head2 C<get_max_cache_size>
 
