@@ -521,6 +521,13 @@ __END__
     # Wrap up by de-initializing
     deinitialize();
 
+=head1 DESCRIPTION
+
+This module implements an interface to PyTorch's C<libcpuinfo> available
+L<here|https://github.com/pytorch/cpuinfo>.
+
+Why? Because.
+
 =head1 FUNCTIONS
 
 The following functions are available:
