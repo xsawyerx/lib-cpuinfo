@@ -489,6 +489,14 @@ __END__
 
 =head1 SYNOPSIS
 
+    use CPUInfo::FFI qw<
+        initialize
+        get_cores_count
+        get_current_core
+        get_clusters
+        deinitialize
+    >;
+
     # First, initialize
     initialize()
         or die "Cannot initialize cpuinfo";
@@ -500,100 +508,238 @@ __END__
     my $core = get_current_core();
     printf "Vendor: %s\n", $core->vendor();
 
-    # Wrap up by deinitializing
+    foreach my $cluster ( get_clusters()->@* ) {
+        printf "Cluster (%d):  %s\n", $cluster->id(), $cluster->vendor();
+    }
+
+    # Wrap up by de-initializing
     deinitialize();
 
 =head1 FUNCTIONS
 
 The following functions are available:
 
-=head2 initialize
+=head2 C<initialize>
 
-=head2 deinitialize
+    my $success = initialize();
+    if ( !$success ) {...}
 
-=head2 get_processors_count
+    # or better yet
+    initialize()
+        or die "Cannot initialize libcpuinfo";
 
-=head2 get_cores_count
+Initialize the library.
 
-=head2 get_clusters_count
+=head2 C<deinitialize>
 
-=head2 get_packages_count
+    deinitialize();
 
-=head2 get_uarchs_count
+De-initialize the library.
 
-=head2 get_l1i_caches_count
+=head2 C<get_processors_count>
 
-=head2 get_l1d_caches_count
+    my $count = get_processors_count();
 
-=head2 get_l2_caches_count
+Return how many processors there are.
 
-=head2 get_l3_caches_count
+=head2 C<get_cores_count>
 
-=head2 get_l4_caches_count
+    my $count = get_cores_count();
 
-=head2 get_processors
+Return how many cores there are.
 
-=head2 get_cores
+=head2 C<get_clusters_count>
 
-=head2 get_clusters
+    my $count = get_clusters_count();
 
-=head2 get_packages
+Return how many clusters there are.
 
-=head2 get_uarchs
+=head2 C<get_packages_count>
 
-=head2 get_l1i_caches
+    my $count = get_packages_count();
 
-=head2 get_l1d_caches
+Return how many packages there are.
 
-=head2 get_l2_caches
+=head2 C<get_uarchs_count>
 
-=head2 get_l3_caches
+    my $count = get_uarchs_count();
 
-=head2 get_l4_caches
+Return how many uarchs there are.
 
-=head2 get_processor
+=head2 C<get_l1i_caches_count>
 
-=head2 get_core
+    my $count = get_l1i_caches_count();
 
-=head2 get_cluster
+Return how many L1i caches there are.
 
-=head2 get_package
+=head2 C<get_l1d_caches_count>
 
-=head2 get_uarch
+    my $count = get_l1d_caches_count();
 
-=head2 get_l1i_cache
+Return how many L1d caches there are.
 
-=head2 get_l1d_cache
+=head2 C<get_l2_caches_count>
 
-=head2 get_l2_cache
+    my $count = get_l2_caches_count();
 
-=head2 get_l3_cache
+Return how many L2 caches there are.
 
-=head2 get_l4_cache
+=head2 C<get_l3_caches_count>
 
-=head2 get_max_cache_size
+    my $count = get_l3_caches_count();
 
-=head2 get_current_uarch_index
+Return how many L3 caches there are.
 
-=head2 get_current_core
+=head2 C<get_l4_caches_count>
 
-=head2 get_current_processor
+    my $count = get_l4_caches_count();
+
+Return how many L4 caches there are.
+
+=head2 C<get_processors>
+
+    foreach my $processor ( get_processors()->@* ) {
+        # do something with processor object
+    }
+
+Return an arrayref of all the processor objects.
+
+=head2 C<get_cores>
+
+    foreach my $core ( get_cores()->@* ) {
+        # do something with core object
+    }
+
+Return an arrayref of all the core objects.
+
+=head2 C<get_clusters>
+
+    foreach my $cluster ( get_clusters()->@* ) {
+        # do something with cluster object
+    }
+
+Return an arrayref of all the cluster objects.
+
+=head2 C<get_packages>
+
+    foreach my $package ( get_packages()->@* ) {
+        # do something with package object
+    }
+
+Return an arrayref of all the package objects.
+
+=head2 C<get_uarchs>
+
+    foreach my $uarch ( get_uarchs()->@* ) {
+        # do something with uarch object
+    }
+
+Return an arrayref of all the uarch objects.
+
+=head2 C<get_l1i_caches>
+
+    foreach my $cache ( get_l1i_caches()->@* ) {
+        # do something with cache object
+    }
+
+Return an arrayref of all the L1i cache objects.
+
+=head2 C<get_l1d_caches>
+
+    foreach my $cache ( get_l1d_caches()->@* ) {
+        # do something with cache object
+    }
+
+Return an arrayref of all the L1d cache objects.
+
+=head2 C<get_l2_caches>
+
+    foreach my $cache ( get_l2_caches()->@* ) {
+        # do something with cache object
+    }
+
+Return an arrayref of all the L2 cache objects.
+
+=head2 C<get_l3_caches>
+
+    foreach my $cache ( get_l3_caches()->@* ) {
+        # do something with cache object
+    }
+
+Return an arrayref of all the L3 cache objects.
+
+=head2 C<get_l4_caches>
+
+    foreach my $cache ( get_l4_caches()->@* ) {
+        # do something with cache object
+    }
+
+Return an arrayref of all the L4 cache objects.
+
+=head2 C<get_processor($index)>
+
+Return the processor at index C<$index>.
+
+=head2 C<get_core($index)>
+
+Return the core at index C<$index>.
+
+=head2 C<get_cluster($index)>
+
+Return the cluster at index C<$index>.
+
+=head2 C<get_package($index)>
+
+Return the package at index C<$index>.
+
+=head2 C<get_uarch($index)>
+
+Return the UArch at index C<$index>.
+
+=head2 C<get_l1i_cache($index)>
+
+Return the L1i cache at index C<$index>.
+
+=head2 C<get_l1d_cache($index)>
+
+Return the L1d cache at index C<$index>.
+
+=head2 C<get_l2_cache($index)>
+
+Return the L2 cache at index C<$index>.
+
+=head2 C<get_l3_cache($index)>
+
+Return the L3 cache at index C<$index>.
+
+=head2 C<get_l4_cache($index)>
+
+Return the L4 cache at index C<$index>.
+
+=head2 C<get_max_cache_size>
+
+Get the max cache size.
+
+=head2 C<get_current_uarch_index>
+
+Get the current UArch index, I guess?
+
+=head2 C<get_current_core>
+
+Get the current core.
+
+=head2 C<get_current_processor>
+
+Get the current processor.
 
 =head1 BENCHMARKS
 
 =head1 SEE ALSO
 
-Dependencies worth exploring:
+This module uses L<FFI::Platypus> to connect to the C library and
+L<FFI::C> to define the object structs.
 
-=over 4
-
-=item * L<FFI::Platypus>
-
-=item * L<FFI::C>
-
-=back
-
-Other modules to retrieve CPU information:
+These modules also retrieve CPU information:
 
 =over 4
 
@@ -611,4 +757,3 @@ Other modules to retrieve CPU information:
 
 =back
 
-(Most of these are benchmarked against this module above.)
