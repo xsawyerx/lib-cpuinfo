@@ -7,6 +7,7 @@ use strict;
 use warnings;
 use parent 'Exporter';
 use experimental qw< signatures >;
+use FFI::CheckLib 0.06 qw< find_lib_or_die >;
 use FFI::Platypus;
 use FFI::C;
 use POSIX qw< uname >;
@@ -63,10 +64,7 @@ our $isarm_or_arm64 = $arch =~ /(?: aarch64 | arm )/xmsi;
 my $ffi = FFI::Platypus->new( 'api' => 1 );
 FFI::C->ffi($ffi);
 
-# TODO: Move this to CheckLib or whatever
-$ffi->lib(
-    '/usr/lib/x86_64-linux-gnu/libcpuinfo.so',
-);
+$ffi->lib( find_lib_or_die( 'lib' => 'cpuinfo' ) );
 
 package CPUInfo::FFI::Enum::Vendor {
 
