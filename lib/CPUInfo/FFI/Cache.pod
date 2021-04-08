@@ -1,4 +1,5 @@
-# ABSTRACT: CPUInfo Cachel object
+# PODNAME: CPUInfo::Cache
+# ABSTRACT: CPUInfo Cache object
 
 =pod
 

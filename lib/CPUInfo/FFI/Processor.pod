@@ -1,3 +1,4 @@
+# PODNAME: CPUInfo::Processor
 # ABSTRACT: CPUInfo Processor object
 
 =pod

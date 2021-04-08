@@ -69,6 +69,7 @@ $ffi->lib(
 );
 
 package CPUInfo::FFI::Enum::Vendor {
+
     FFI::C->enum( 'cpuinfo_vendor' => [
         qw<
 	    unknown
@@ -108,6 +109,7 @@ package CPUInfo::FFI::Enum::Vendor {
 }
 
 package CPUInfo::FFI::Enum::UArch {
+
     FFI::C->enum( 'cpuinfo_uarch' => [
         [ 'unknown'         => 0          ],
         [ 'p5'              => 0x00100100 ],
@@ -219,6 +221,7 @@ package CPUInfo::FFI::Enum::UArch {
 }
 
 package CPUInfo::FFI::Cache {
+
     FFI::C->struct( 'cpuinfo_cache' => [
         'size'            => 'uint32',
         'associativity'   => 'uint32',
@@ -232,6 +235,7 @@ package CPUInfo::FFI::Cache {
 }
 
 package CPUInfo::FFI::Package {
+
     FFI::C->struct( 'cpuinfo_package' => [
         '_name'           => 'record(48)', # CPUINFO_PACKAGE_NAME_MAX = 48
         'processor_start' => 'uint32',
@@ -249,6 +253,7 @@ package CPUInfo::FFI::Package {
 
 # XXX Unused?
 package CPUInfo::FFI::TraceCache {
+
     FFI::C->struct( 'cpuinfo_trace_cache' => [
         'uops'          => 'uint32',
         'associativity' => 'uint32',
@@ -257,6 +262,7 @@ package CPUInfo::FFI::TraceCache {
 
 # XXX Unused?
 package CPUInfo::FFI::TLB {
+
     FFI::C->struct( 'cpuinfo_tlb' => [
         'entries'       => 'uint32',
         'associativity' => 'uint32',
@@ -265,6 +271,7 @@ package CPUInfo::FFI::TLB {
 }
 
 package CPUInfo::FFI::Cluster {
+
     use experimental qw< signatures >;
 
     FFI::C->struct( 'cpuinfo_cluster' => [
@@ -292,6 +299,7 @@ package CPUInfo::FFI::Cluster {
 }
 
 package CPUInfo::FFI::Core {
+
     use experimental qw< signatures >;
 
     FFI::C->struct( 'cpuinfo_core' => [
@@ -322,6 +330,7 @@ package CPUInfo::FFI::Core {
 }
 
 package CPUInfo::FFI::UArchInfo {
+
     FFI::C->struct( 'cpuinfo_uarch_info' => [
         'uarch' => 'cpuinfo_uarch',
 
@@ -335,6 +344,7 @@ package CPUInfo::FFI::UArchInfo {
 }
 
 package CPUInfo::FFI::Processor {
+
     use experimental qw< signatures >;
 
     FFI::C->struct( 'cpuinfo_processor' => [

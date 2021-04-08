@@ -1,3 +1,4 @@
+# PODNAME: CPUInfo::UArchInfo
 # ABSTRACT: CPUInfo UArchInfo object
 
 =pod

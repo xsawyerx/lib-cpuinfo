@@ -1,3 +1,4 @@
+# PODNAME: CPUInfo::Cluster
 # ABSTRACT: CPUInfo Cluster object
 
 =pod

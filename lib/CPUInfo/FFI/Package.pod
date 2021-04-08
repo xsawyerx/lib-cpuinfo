@@ -1,3 +1,4 @@
+# PODNAME: CPUInfo::Package
 # ABSTRACT: CPUInfo Package object
 
 =pod
