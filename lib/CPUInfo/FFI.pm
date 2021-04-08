@@ -711,61 +711,126 @@ See L<CPUInfo::FFI::Cache>.
 
 =head2 C<get_processor($index)>
 
+    my $index     = 0;
+    my $processor = get_processor($index);
+
 Return the L<CPUInfo::FFI::Processor> processor object at index C<$index>.
 
 =head2 C<get_core($index)>
+
+    my $index = 0;
+    my $core  = get_core($index);
 
 Return the <CPUInfo::FFI::Core> core object at index C<$index>.
 
 =head2 C<get_cluster($index)>
 
+    my $index   = 0;
+    my $cluster = get_cluster($index);
+
 Return the L<CPUInfo::FFI::Cluster> cluster object at index C<$index>.
 
 =head2 C<get_package($index)>
+
+    my $index   = 0;
+    my $package = get_package($index);
 
 Return the L<CPUInfo::FFI::Package> package object at index C<$index>.
 
 =head2 C<get_uarch($index)>
 
+    my $index     = 0;
+    my $uarchinfo = get_uarch($index);
+
 Return the L<CPUInfo::FFI::UArchInfo> uarch object at index C<$index>.
 
 =head2 C<get_l1i_cache($index)>
+
+    my $index = 0;
+    my $cache = get_l1i_cache($index);
 
 Return the L<CPUInfo::FFI::Cache> L1i cache object at index C<$index>.
 
 =head2 C<get_l1d_cache($index)>
 
+    my $index = 0;
+    my $cache = get_l1d_cache($index);
+
 Return the L<CPUInfo::FFI::Cache> L1d cache object at index C<$index>.
 
 =head2 C<get_l2_cache($index)>
+
+    my $index = 0;
+    my $cache = get_l2_cache($index);
 
 Return the L<CPUInfo::FFI::Cache> L2 cache object at index C<$index>.
 
 =head2 C<get_l3_cache($index)>
 
+    my $index = 0;
+    my $cache = get_l3_cache($index);
+
 Return the L<CPUInfo::FFI::Cache> L3 cache object at index C<$index>.
 
 =head2 C<get_l4_cache($index)>
+
+    my $index = 0;
+    my $cache = get_l4_cache($index);
 
 Return the L<CPUInfo::FFI::Cache> L4 cache object at index C<$index>.
 
 =head2 C<get_max_cache_size>
 
+    my $size = get_max_cache_size();
+
 Get the max cache size.
 
 =head2 C<get_current_uarch_index>
+
+    my $index = get_current_uarch_index();
 
 Get the current UArch index, I guess?
 
 =head2 C<get_current_core>
 
-Get the current core.
+    my $core = get_current_core();
+
+Get the current L<CPUInfo::FFI::Core> core object.
 
 =head2 C<get_current_processor>
 
-Get the current processor.
+    my $processor = get_current_processor();
+
+Get the current L<CPUInfo::FFI::Processor> processor object.
 
 =head1 BENCHMARKS
+
+=over 4
+
+=item * Counting number of CPUs
+
+Loops: 1,000.
+
+    CPUInfo::FFI:           Ran 21 iterations (1 outliers).
+    CPUInfo::FFI:           Rounded run time per iteration: 4.163e-04 +/- 1.5e-06 (0.4%)
+
+    Sys::Info::Device::CPU: Ran 25 iterations (5 outliers).
+    Sys::Info::Device::CPU: Rounded run time per iteration: 9.4582e-01 +/- 2.9e-04 (0.0%)
+
+    Rex::Inventory::Proc:   Ran 21 iterations (0 outliers).
+    Rex::Inventory::Proc:   Rounded run time per iteration: 5.790e-01 +/- 1.1e-03 (0.2%)
+
+=item * Getting the CPU package name
+
+Loops: 1,000.
+
+    CPUInfo::FFI:           Ran 23 iterations (3 outliers).
+    CPUInfo::FFI:           Rounded run time per iteration: 1.2206e-02 +/- 1.3e-05 (0.1%)
+
+    Sys::Info::Device::CPU: Ran 23 iterations (3 outliers).
+    Sys::Info::Device::CPU: Rounded run time per iteration: 9.6313e-01 +/- 1.0e-03 (0.1%)
+
+=back
 
 =head1 SEE ALSO
 

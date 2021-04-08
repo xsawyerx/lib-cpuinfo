@@ -14,14 +14,18 @@ use Linux::Info::CpuStats;
 use CPUInfo::FFI qw<
     initialize
     deinitialize
+    get_current_core
     get_processors_count
 >;
 
 #use Linux::Proc::Cpuinfo;
 #use Proc::CPUUsage;
 
-use constant 'MAX_RUN' => 1e4;
+use constant 'MAX_RUN' => 1e3;
 
+print STDERR "--- Counting CPUs ---\n";
+
+{
 my $bench = Dumbbench->new(
     'target_rel_precision' => 0.005,
     'initial_runs'         => 20,
@@ -31,14 +35,11 @@ $bench->add_instances(
     Dumbbench::Instance::PerlSub->new(
         'name' => 'CPUInfo::FFI',
         'code' => sub {
-            initialize()
-                or die "Cannot initialize";
-
             for ( 1 .. MAX_RUN() ) {
+                initialize();
                 my $count = get_processors_count();
+                deinitialize();
             }
-
-            deinitialize();
         },
     ),
 
@@ -47,7 +48,7 @@ $bench->add_instances(
         'code' => sub {
             for ( 1 .. MAX_RUN() ) {
                 my $info  = Sys::Info->new();
-                my $cpu   = $info->device( 'CPU' );
+                my $cpu   = $info->device('CPU');
                 my $count = $cpu->count;
             }
         },
@@ -67,4 +68,40 @@ $bench->add_instances(
 
 $bench->run;
 $bench->report;
+}
 
+print STDERR "--- Getting package name ---\n";
+
+{
+my $bench = Dumbbench->new(
+    'target_rel_precision' => 0.005,
+    'initial_runs'         => 20,
+);
+
+$bench->add_instances(
+    Dumbbench::Instance::PerlSub->new(
+        'name' => 'CPUInfo::FFI',
+        'code' => sub {
+            for ( 1 .. MAX_RUN() ) {
+                initialize();
+                my $name = get_current_core()->package()->name();
+                deinitialize();
+            }
+        },
+    ),
+
+    Dumbbench::Instance::PerlSub->new(
+        'name' => 'Sys::Info::Device::CPU',
+        'code' => sub {
+            for ( 1 .. MAX_RUN() ) {
+                my $info = Sys::Info->new();
+                my $cpu  = $info->device('CPU');
+                my $name = $cpu->identify();
+            }
+        },
+    ),
+);
+
+$bench->run;
+$bench->report;
+}
