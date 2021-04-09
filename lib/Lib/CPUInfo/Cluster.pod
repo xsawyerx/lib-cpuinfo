@@ -1,4 +1,4 @@
-# PODNAME: CPUInfo::Cluster
+# PODNAME: Lib::CPUInfo::Cluster
 # ABSTRACT: CPUInfo Cluster object
 
 =pod
@@ -46,7 +46,7 @@ Returns an integer.
 
     my $package = $cluster->package();
 
-Returns the L<CPUInfo::FFI::Package> package object.
+Returns the L<Lib::CPUInfo::Package> package object.
 
 =head2 C<vendor>
 

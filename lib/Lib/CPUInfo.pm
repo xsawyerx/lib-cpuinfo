@@ -1,4 +1,4 @@
-package CPUInfo::FFI;
+package Lib::CPUInfo;
 # ABSTRACT: Interface to PyTorch's libcpuinfo C library
 
 ## no critic
@@ -66,7 +66,7 @@ FFI::C->ffi($ffi);
 
 $ffi->lib( find_lib_or_die( 'lib' => 'cpuinfo' ) );
 
-package CPUInfo::FFI::Enum::Vendor {
+package Lib::CPUInfo::Enum::Vendor {
 
     FFI::C->enum( 'cpuinfo_vendor' => [
         qw<
@@ -106,7 +106,7 @@ package CPUInfo::FFI::Enum::Vendor {
     ]);
 }
 
-package CPUInfo::FFI::Enum::UArch {
+package Lib::CPUInfo::Enum::UArch {
 
     FFI::C->enum( 'cpuinfo_uarch' => [
         [ 'unknown'         => 0          ],
@@ -218,7 +218,7 @@ package CPUInfo::FFI::Enum::UArch {
     ]);
 }
 
-package CPUInfo::FFI::Cache {
+package Lib::CPUInfo::Cache {
 
     FFI::C->struct( 'cpuinfo_cache' => [
         'size'            => 'uint32',
@@ -232,7 +232,7 @@ package CPUInfo::FFI::Cache {
     ]);
 }
 
-package CPUInfo::FFI::Package {
+package Lib::CPUInfo::Package {
 
     FFI::C->struct( 'cpuinfo_package' => [
         '_name'           => 'record(48)', # CPUINFO_PACKAGE_NAME_MAX = 48
@@ -250,7 +250,7 @@ package CPUInfo::FFI::Package {
 }
 
 # XXX Unused?
-package CPUInfo::FFI::TraceCache {
+package Lib::CPUInfo::TraceCache {
 
     FFI::C->struct( 'cpuinfo_trace_cache' => [
         'uops'          => 'uint32',
@@ -259,7 +259,7 @@ package CPUInfo::FFI::TraceCache {
 }
 
 # XXX Unused?
-package CPUInfo::FFI::TLB {
+package Lib::CPUInfo::TLB {
 
     FFI::C->struct( 'cpuinfo_tlb' => [
         'entries'       => 'uint32',
@@ -268,7 +268,7 @@ package CPUInfo::FFI::TLB {
     ]);
 }
 
-package CPUInfo::FFI::Cluster {
+package Lib::CPUInfo::Cluster {
 
     use experimental qw< signatures >;
 
@@ -296,7 +296,7 @@ package CPUInfo::FFI::Cluster {
     }
 }
 
-package CPUInfo::FFI::Core {
+package Lib::CPUInfo::Core {
 
     use experimental qw< signatures >;
 
@@ -327,7 +327,7 @@ package CPUInfo::FFI::Core {
     }
 }
 
-package CPUInfo::FFI::UArchInfo {
+package Lib::CPUInfo::UArchInfo {
 
     FFI::C->struct( 'cpuinfo_uarch_info' => [
         'uarch' => 'cpuinfo_uarch',
@@ -341,7 +341,7 @@ package CPUInfo::FFI::UArchInfo {
     ]);
 }
 
-package CPUInfo::FFI::Processor {
+package Lib::CPUInfo::Processor {
 
     use experimental qw< signatures >;
 
@@ -493,7 +493,7 @@ __END__
 
 =head1 SYNOPSIS
 
-    use CPUInfo::FFI qw<
+    use Lib::CPUInfo qw<
         initialize
         get_cores_count
         get_current_core
@@ -615,7 +615,7 @@ Return how many L4 caches there are.
 
 Return an arrayref of all the processor objects.
 
-See L<CPUInfo::FFI::Processor>.
+See L<Lib::CPUInfo::Processor>.
 
 =head2 C<get_cores>
 
@@ -625,7 +625,7 @@ See L<CPUInfo::FFI::Processor>.
 
 Return an arrayref of all the core objects.
 
-See L<CPUInfo::FFI::Core>.
+See L<Lib::CPUInfo::Core>.
 
 =head2 C<get_clusters>
 
@@ -635,7 +635,7 @@ See L<CPUInfo::FFI::Core>.
 
 Return an arrayref of all the cluster objects.
 
-See L<CPUInfo::FFI::Cluster>.
+See L<Lib::CPUInfo::Cluster>.
 
 =head2 C<get_packages>
 
@@ -645,7 +645,7 @@ See L<CPUInfo::FFI::Cluster>.
 
 Return an arrayref of all the package objects.
 
-See L<CPUInfo::FFI::Package>.
+See L<Lib::CPUInfo::Package>.
 
 =head2 C<get_uarchs>
 
@@ -655,7 +655,7 @@ See L<CPUInfo::FFI::Package>.
 
 Return an arrayref of all the uarch objects.
 
-See L<CPUInfo::FFI::UArchInfo>.
+See L<Lib::CPUInfo::UArchInfo>.
 
 =head2 C<get_l1i_caches>
 
@@ -665,7 +665,7 @@ See L<CPUInfo::FFI::UArchInfo>.
 
 Return an arrayref of all the L1i cache objects.
 
-See L<CPUInfo::FFI::Cache>.
+See L<Lib::CPUInfo::Cache>.
 
 =head2 C<get_l1d_caches>
 
@@ -675,7 +675,7 @@ See L<CPUInfo::FFI::Cache>.
 
 Return an arrayref of all the L1d cache objects.
 
-See L<CPUInfo::FFI::Cache>.
+See L<Lib::CPUInfo::Cache>.
 
 =head2 C<get_l2_caches>
 
@@ -685,7 +685,7 @@ See L<CPUInfo::FFI::Cache>.
 
 Return an arrayref of all the L2 cache objects.
 
-See L<CPUInfo::FFI::Cache>.
+See L<Lib::CPUInfo::Cache>.
 
 =head2 C<get_l3_caches>
 
@@ -695,7 +695,7 @@ See L<CPUInfo::FFI::Cache>.
 
 Return an arrayref of all the L3 cache objects.
 
-See L<CPUInfo::FFI::Cache>.
+See L<Lib::CPUInfo::Cache>.
 
 =head2 C<get_l4_caches>
 
@@ -705,77 +705,77 @@ See L<CPUInfo::FFI::Cache>.
 
 Return an arrayref of all the L4 cache objects.
 
-See L<CPUInfo::FFI::Cache>.
+See L<Lib::CPUInfo::Cache>.
 
 =head2 C<get_processor($index)>
 
     my $index     = 0;
     my $processor = get_processor($index);
 
-Return the L<CPUInfo::FFI::Processor> processor object at index C<$index>.
+Return the L<Lib::CPUInfo::Processor> processor object at index C<$index>.
 
 =head2 C<get_core($index)>
 
     my $index = 0;
     my $core  = get_core($index);
 
-Return the <CPUInfo::FFI::Core> core object at index C<$index>.
+Return the <Lib::CPUInfo::Core> core object at index C<$index>.
 
 =head2 C<get_cluster($index)>
 
     my $index   = 0;
     my $cluster = get_cluster($index);
 
-Return the L<CPUInfo::FFI::Cluster> cluster object at index C<$index>.
+Return the L<Lib::CPUInfo::Cluster> cluster object at index C<$index>.
 
 =head2 C<get_package($index)>
 
     my $index   = 0;
     my $package = get_package($index);
 
-Return the L<CPUInfo::FFI::Package> package object at index C<$index>.
+Return the L<Lib::CPUInfo::Package> package object at index C<$index>.
 
 =head2 C<get_uarch($index)>
 
     my $index     = 0;
     my $uarchinfo = get_uarch($index);
 
-Return the L<CPUInfo::FFI::UArchInfo> uarch object at index C<$index>.
+Return the L<Lib::CPUInfo::UArchInfo> uarch object at index C<$index>.
 
 =head2 C<get_l1i_cache($index)>
 
     my $index = 0;
     my $cache = get_l1i_cache($index);
 
-Return the L<CPUInfo::FFI::Cache> L1i cache object at index C<$index>.
+Return the L<Lib::CPUInfo::Cache> L1i cache object at index C<$index>.
 
 =head2 C<get_l1d_cache($index)>
 
     my $index = 0;
     my $cache = get_l1d_cache($index);
 
-Return the L<CPUInfo::FFI::Cache> L1d cache object at index C<$index>.
+Return the L<Lib::CPUInfo::Cache> L1d cache object at index C<$index>.
 
 =head2 C<get_l2_cache($index)>
 
     my $index = 0;
     my $cache = get_l2_cache($index);
 
-Return the L<CPUInfo::FFI::Cache> L2 cache object at index C<$index>.
+Return the L<Lib::CPUInfo::Cache> L2 cache object at index C<$index>.
 
 =head2 C<get_l3_cache($index)>
 
     my $index = 0;
     my $cache = get_l3_cache($index);
 
-Return the L<CPUInfo::FFI::Cache> L3 cache object at index C<$index>.
+Return the L<Lib::CPUInfo::Cache> L3 cache object at index C<$index>.
 
 =head2 C<get_l4_cache($index)>
 
     my $index = 0;
     my $cache = get_l4_cache($index);
 
-Return the L<CPUInfo::FFI::Cache> L4 cache object at index C<$index>.
+Return the L<Lib::CPUInfo::Cache> L4 cache object at index C<$index>.
 
 =head2 C<get_max_cache_size>
 
@@ -793,13 +793,13 @@ Get the current UArch index, I guess?
 
     my $core = get_current_core();
 
-Get the current L<CPUInfo::FFI::Core> core object.
+Get the current L<Lib::CPUInfo::Core> core object.
 
 =head2 C<get_current_processor>
 
     my $processor = get_current_processor();
 
-Get the current L<CPUInfo::FFI::Processor> processor object.
+Get the current L<Lib::CPUInfo::Processor> processor object.
 
 =head1 BENCHMARKS
 
@@ -809,8 +809,8 @@ Get the current L<CPUInfo::FFI::Processor> processor object.
 
 Loops: 1,000.
 
-    CPUInfo::FFI:           Ran 21 iterations (1 outliers).
-    CPUInfo::FFI:           Rounded run time per iteration: 4.163e-04 +/- 1.5e-06 (0.4%)
+    Lib::CPUInfo:           Ran 21 iterations (1 outliers).
+    Lib::CPUInfo:           Rounded run time per iteration: 4.163e-04 +/- 1.5e-06 (0.4%)
 
     Sys::Info::Device::CPU: Ran 25 iterations (5 outliers).
     Sys::Info::Device::CPU: Rounded run time per iteration: 9.4582e-01 +/- 2.9e-04 (0.0%)
@@ -822,8 +822,8 @@ Loops: 1,000.
 
 Loops: 1,000.
 
-    CPUInfo::FFI:           Ran 23 iterations (3 outliers).
-    CPUInfo::FFI:           Rounded run time per iteration: 1.2206e-02 +/- 1.3e-05 (0.1%)
+    Lib::CPUInfo:           Ran 23 iterations (3 outliers).
+    Lib::CPUInfo:           Rounded run time per iteration: 1.2206e-02 +/- 1.3e-05 (0.1%)
 
     Sys::Info::Device::CPU: Ran 23 iterations (3 outliers).
     Sys::Info::Device::CPU: Rounded run time per iteration: 9.6313e-01 +/- 1.0e-03 (0.1%)

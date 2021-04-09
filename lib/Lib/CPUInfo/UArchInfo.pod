@@ -1,120 +1,20 @@
-# PODNAME: CPUInfo::Core
-# ABSTRACT: CPUInfo Core object
+# PODNAME: Lib::CPUInfo::UArchInfo
+# ABSTRACT: CPUInfo UArchInfo object
 
 =pod
 
 =head1 SYNOPSIS
 
-    my $index  = 0;
-    my $core   = get_core($index);
-    my $vendor = $core->vendor();
+    my $index     = 0;
+    my $uarchinfo = get_uarch($index);
+    my $uarch     = $uarchinfo->uarch();
     ...
 
 =head1 ATTRIBUTES
 
-=head2 C<processor_start>
-
-    my $start = $core->processor_start();
-
-Returns an integer.
-
-=head2 C<processor_count>
-
-    my $count = $core->processor_count();
-
-=head2 C<core_id>
-
-    my $id = $core->core_id();
-
-Returns an integer.
-
-=head2 C<cluster>
-
-    my $cluster = $core->cluster();
-
-Returns the L<CPUInfo::FFI::Cluster> cluster object.
-
-=head2 C<package>
-
-    my $package = $core->package();
-
-Returns the L<CPUInfo::FFI::Package> package object.
-
-=head2 C<vendor>
-
-    my $vendor = $core->vendor();
-
-Returns the vendor string for the core.
-
-Available values:
-
-=over 4
-
-=item * C<unknown>
-
-=item * C<intel>
-
-=item * C<amd>
-
-=item * C<arm>
-
-=item * C<qualcomm>
-
-=item * C<apple>
-
-=item * C<samsung>
-
-=item * C<nvidia>
-
-=item * C<mips>
-
-=item * C<ibm>
-
-=item * C<ingenic>
-
-=item * C<via>
-
-=item * C<cavium>
-
-=item * C<broadcom>
-
-=item * C<apm>
-
-=item * C<huawei>
-
-=item * C<hygon>
-
-=item * C<texas_instruments>
-
-=item * C<marvell>
-
-=item * C<rdc>
-
-=item * C<dmp>
-
-=item * C<motorola>
-
-=item * C<transmeta>
-
-=item * C<cyrix>
-
-=item * C<rise>
-
-=item * C<nsc>
-
-=item * C<sis>
-
-=item * C<nexgen>
-
-=item * C<umc>
-
-=item * C<dec>
-
-=back
-
 =head2 C<uarch>
 
-    my $uarch = $core->uarch();
+    my $uarch = $uarchinfo->uarch();
 
 Returns the uarch string for the core.
 
@@ -338,7 +238,7 @@ Available values:
 
 =head2 C<cpuid>
 
-    my $cpuid = $core->cpuid();
+    my $cpuid = $uarchinfo->cpuid();
 
 Returns an integer.
 
@@ -346,15 +246,19 @@ This is only available on C<x86_64>.
 
 =head2 C<midr>
 
-    my $midr = $core->midr();
+    my $midr = $uarchinfo->midr();
 
 Returns an integer.
 
 This is only available on ARM or ARM64.
 
-=head2 C<frequency>
+=head2 C<processor_count>
 
-    my $frequency = $cluster->frequency();
+    my $count = $uarchinfo->processor_count();
+
+=head2 C<core_count>
+
+    my $count = $uarchinfo->core_count();
 
 Returns an integer.
 

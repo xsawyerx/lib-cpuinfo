@@ -1,4 +1,4 @@
-# PODNAME: CPUInfo::Processor
+# PODNAME: Lib::CPUInfo::Processor
 # ABSTRACT: CPUInfo Processor object
 
 =pod
@@ -25,19 +25,19 @@ Return an integer.
 
     my $core = $processor->core();
 
-Returns the L<CPUInfo::FFI::Core> package object.
+Returns the L<Lib::CPUInfo::Core> package object.
 
 =head2 C<cluster>
 
     my $cluster = $processor->cluster();
 
-Returns the L<CPUInfo::FFI::Cluster> cluster object.
+Returns the L<Lib::CPUInfo::Cluster> cluster object.
 
 =head2 C<package>
 
     my $package = $processor->package();
 
-Returns the L<CPUInfo::FFI::Package> package object.
+Returns the L<Lib::CPUInfo::Package> package object.
 
 =head2 C<linux_id>
 
@@ -67,29 +67,29 @@ This is only available on C<x86_64>.
 
     my $l1i = $processor->l1i();
 
-Return the L<CPUInfo::FFI::Cache> l1i cache object.
+Return the L<Lib::CPUInfo::Cache> l1i cache object.
 
 =head2 C<l1d>
 
     my $l1d = $processor->l1d();
 
-Return the L<CPUInfo::FFI::Cache> l1d cache object.
+Return the L<Lib::CPUInfo::Cache> l1d cache object.
 
 =head2 C<l2>
 
     my $l2  = $processor->l2();
 
-Return the L<CPUInfo::FFI::Cache> l2 cache object.
+Return the L<Lib::CPUInfo::Cache> l2 cache object.
 
 =head2 C<l3>
 
     my $l3  = $processor->l3();
 
-Return the L<CPUInfo::FFI::Cache> l3 cache object.
+Return the L<Lib::CPUInfo::Cache> l3 cache object.
 
 =head2 C<l4>
 
     my $l4  = $processor->l4();
 
-Return the L<CPUInfo::FFI::Cache> l4 cache object.
+Return the L<Lib::CPUInfo::Cache> l4 cache object.
 
