@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use Test::More 'tests' => 2 + 6;
 use Test::Fatal qw< exception >;
-use CPUInfo::FFI qw<
+use Lib::CPUInfo qw<
     initialize
     deinitialize
     get_processor
@@ -43,7 +43,7 @@ ok( initialize(), 'Successfully initialized with initialize()' );
 
 subtest( 'Processor' => sub {
     my $proc = get_processor(0);
-    isa_ok( $proc, 'CPUInfo::FFI::Processor' );
+    isa_ok( $proc, 'Lib::CPUInfo::Processor' );
     my $int;
 
     $int = $proc->smt_id();
@@ -54,16 +54,16 @@ subtest( 'Processor' => sub {
     );
 
     my $core = $proc->core();
-    isa_ok( $core, 'CPUInfo::FFI::Core' );
+    isa_ok( $core, 'Lib::CPUInfo::Core' );
 
     my $cluster = $proc->cluster();
-    isa_ok( $cluster, 'CPUInfo::FFI::Cluster' );
+    isa_ok( $cluster, 'Lib::CPUInfo::Cluster' );
 
     my $package = $proc->package();
-    isa_ok( $package, 'CPUInfo::FFI::Package' );
+    isa_ok( $package, 'Lib::CPUInfo::Package' );
 
     # environment-specific arguments
-    if ( $CPUInfo::FFI::is_linux ) {
+    if ( $Lib::CPUInfo::is_linux ) {
         $int = $proc->linux_id();
         like(
             $int,
@@ -72,7 +72,7 @@ subtest( 'Processor' => sub {
         );
     }
 
-    if ( $CPUInfo::FFI::is_windows ) {
+    if ( $Lib::CPUInfo::is_windows ) {
         $int = $proc->windows_group_id();
         like(
             $int,
@@ -88,7 +88,7 @@ subtest( 'Processor' => sub {
         );
     }
 
-    if ( $CPUInfo::FFI::is86_or_8664 ) {
+    if ( $Lib::CPUInfo::is86_or_8664 ) {
         $int = $proc->apic_id();
         like(
             $int,
@@ -106,13 +106,13 @@ subtest( 'Processor' => sub {
             next;
         }
 
-        isa_ok( $cache, 'CPUInfo::FFI::Cache' );
+        isa_ok( $cache, 'Lib::CPUInfo::Cache' );
     }
 });
 
 subtest( 'Core' => sub {
     my $core = get_core(0);
-    isa_ok( $core, 'CPUInfo::FFI::Core' );
+    isa_ok( $core, 'Lib::CPUInfo::Core' );
 
     my $int;
 
@@ -139,12 +139,12 @@ subtest( 'Core' => sub {
 
     isa_ok(
         $core->cluster(),
-        'CPUInfo::FFI::Cluster',
+        'Lib::CPUInfo::Cluster',
     );
 
     isa_ok(
         $core->package(),
-        'CPUInfo::FFI::Package',
+        'Lib::CPUInfo::Package',
     );
 
     my $vendor = $core->vendor();
@@ -153,7 +153,7 @@ subtest( 'Core' => sub {
     my $uarch = $core->uarch();
     ok( defined $uarch && length $uarch, "Got a uarch ($uarch)" );
 
-    if ( $CPUInfo::FFI::is86_or_8664 ) {
+    if ( $Lib::CPUInfo::is86_or_8664 ) {
         $int = $core->cpuid();
         like(
             $int,
@@ -162,7 +162,7 @@ subtest( 'Core' => sub {
         );
     }
 
-    if ( $CPUInfo::FFI::isarm_or_arm64 ) {
+    if ( $Lib::CPUInfo::isarm_or_arm64 ) {
         $int = $core->midr();
         like(
             $int,
@@ -181,7 +181,7 @@ subtest( 'Core' => sub {
 
 subtest( 'Cluster' => sub {
     my $cluster = get_cluster(0);
-    isa_ok( $cluster, 'CPUInfo::FFI::Cluster' );
+    isa_ok( $cluster, 'Lib::CPUInfo::Cluster' );
 
     my $int;
 
@@ -220,7 +220,7 @@ subtest( 'Cluster' => sub {
         "cluster->cluster_id() ($int)",
     );
 
-    isa_ok( $cluster->package(), 'CPUInfo::FFI::Package' );
+    isa_ok( $cluster->package(), 'Lib::CPUInfo::Package' );
 
     my $vendor = $cluster->vendor();
     ok( defined $vendor && length $vendor, "Got a vendor ($vendor)" );
@@ -229,7 +229,7 @@ subtest( 'Cluster' => sub {
     ok( defined $uarch && length $uarch, "Got a uarch ($uarch)" );
 
 
-    if ( $CPUInfo::FFI::is86_or_8664 ) {
+    if ( $Lib::CPUInfo::is86_or_8664 ) {
         $int = $cluster->cpuid();
         like(
             $int,
@@ -238,7 +238,7 @@ subtest( 'Cluster' => sub {
         );
     }
 
-    if ( $CPUInfo::FFI::isarm_or_arm64 ) {
+    if ( $Lib::CPUInfo::isarm_or_arm64 ) {
         $int = $cluster->midr();
         like(
             $int,
@@ -257,7 +257,7 @@ subtest( 'Cluster' => sub {
 
 subtest( 'Package' => sub {
     my $package = get_package(0);
-    isa_ok( $package, 'CPUInfo::FFI::Package' );
+    isa_ok( $package, 'Lib::CPUInfo::Package' );
 
     my $name = $package->name();
     ok( defined $name && length $name, "Got a name ($name)" );
@@ -309,7 +309,7 @@ subtest( 'Package' => sub {
 
 subtest( 'UArchInfo' => sub {
     my $uarch_info = get_uarch(0);
-    isa_ok( $uarch_info, 'CPUInfo::FFI::UArchInfo' );
+    isa_ok( $uarch_info, 'Lib::CPUInfo::UArchInfo' );
 
     my $uarch = $uarch_info->uarch();
     ok( defined $uarch && length $uarch, "Got a uarch ($uarch)" );
@@ -353,7 +353,7 @@ subtest( 'Caches' => sub {
             next;
         }
 
-        isa_ok( $cache, 'CPUInfo::FFI::Cache' );
+        isa_ok( $cache, 'Lib::CPUInfo::Cache' );
 
         my $int;
 

@@ -34,6 +34,6 @@ inc/
 /pm_to_blib
 /*.zip
 /*.tar.gz
-CPUInfo-FFI-*
+Lib-CPUInfo-*
 
 *.sw?

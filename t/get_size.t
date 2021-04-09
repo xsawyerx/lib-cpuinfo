@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use Test::More 'tests' => 2 + 1;
-use CPUInfo::FFI qw<
+use Lib::CPUInfo qw<
     initialize
     deinitialize
     get_max_cache_size

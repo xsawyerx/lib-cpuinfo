@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use Test::More 'tests' => 2 + 4;
-use CPUInfo::FFI qw<
+use Lib::CPUInfo qw<
     initialize
     deinitialize
 
@@ -33,7 +33,7 @@ like(
 );
 
 my $core = get_current_core();
-isa_ok( $core, 'CPUInfo::FFI::Core' );
+isa_ok( $core, 'Lib::CPUInfo::Core' );
 my $processor_count = $core->processor_count();
 like(
     $processor_count,
@@ -42,7 +42,7 @@ like(
 );
 
 my $processor = get_current_processor();
-isa_ok( $processor, 'CPUInfo::FFI::Processor' );;
+isa_ok( $processor, 'Lib::CPUInfo::Processor' );;
 
 deinitialize();
 

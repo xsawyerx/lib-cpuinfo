@@ -1,6 +1,6 @@
 # NAME
 
-CPUInfo::FFI - Interface to PyTorch's libcpuinfo C library
+Lib::CPUInfo - Interface to PyTorch's libcpuinfo C library
 
 # VERSION
 
@@ -8,7 +8,7 @@ version 0.001
 
 # SYNOPSIS
 
-    use CPUInfo::FFI qw<
+    use Lib::CPUInfo qw<
         initialize
         get_cores_count
         get_current_core
@@ -130,7 +130,7 @@ Return how many L4 caches there are.
 
 Return an arrayref of all the processor objects.
 
-See [CPUInfo::FFI::Processor](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AProcessor).
+See [Lib::CPUInfo::Processor](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3AProcessor).
 
 ## `get_cores`
 
@@ -140,7 +140,7 @@ See [CPUInfo::FFI::Processor](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3APro
 
 Return an arrayref of all the core objects.
 
-See [CPUInfo::FFI::Core](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACore).
+See [Lib::CPUInfo::Core](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACore).
 
 ## `get_clusters`
 
@@ -150,7 +150,7 @@ See [CPUInfo::FFI::Core](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACore).
 
 Return an arrayref of all the cluster objects.
 
-See [CPUInfo::FFI::Cluster](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACluster).
+See [Lib::CPUInfo::Cluster](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACluster).
 
 ## `get_packages`
 
@@ -160,7 +160,7 @@ See [CPUInfo::FFI::Cluster](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AClust
 
 Return an arrayref of all the package objects.
 
-See [CPUInfo::FFI::Package](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3APackage).
+See [Lib::CPUInfo::Package](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3APackage).
 
 ## `get_uarchs`
 
@@ -170,7 +170,7 @@ See [CPUInfo::FFI::Package](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3APacka
 
 Return an arrayref of all the uarch objects.
 
-See [CPUInfo::FFI::UArchInfo](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AUArchInfo).
+See [Lib::CPUInfo::UArchInfo](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3AUArchInfo).
 
 ## `get_l1i_caches`
 
@@ -180,7 +180,7 @@ See [CPUInfo::FFI::UArchInfo](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AUAr
 
 Return an arrayref of all the L1i cache objects.
 
-See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
+See [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache).
 
 ## `get_l1d_caches`
 
@@ -190,7 +190,7 @@ See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
 
 Return an arrayref of all the L1d cache objects.
 
-See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
+See [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache).
 
 ## `get_l2_caches`
 
@@ -200,7 +200,7 @@ See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
 
 Return an arrayref of all the L2 cache objects.
 
-See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
+See [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache).
 
 ## `get_l3_caches`
 
@@ -210,7 +210,7 @@ See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
 
 Return an arrayref of all the L3 cache objects.
 
-See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
+See [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache).
 
 ## `get_l4_caches`
 
@@ -220,77 +220,77 @@ See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
 
 Return an arrayref of all the L4 cache objects.
 
-See [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache).
+See [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache).
 
 ## `get_processor($index)`
 
     my $index     = 0;
     my $processor = get_processor($index);
 
-Return the [CPUInfo::FFI::Processor](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AProcessor) processor object at index `$index`.
+Return the [Lib::CPUInfo::Processor](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3AProcessor) processor object at index `$index`.
 
 ## `get_core($index)`
 
     my $index = 0;
     my $core  = get_core($index);
 
-Return the <CPUInfo::FFI::Core> core object at index `$index`.
+Return the <Lib::CPUInfo::Core> core object at index `$index`.
 
 ## `get_cluster($index)`
 
     my $index   = 0;
     my $cluster = get_cluster($index);
 
-Return the [CPUInfo::FFI::Cluster](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACluster) cluster object at index `$index`.
+Return the [Lib::CPUInfo::Cluster](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACluster) cluster object at index `$index`.
 
 ## `get_package($index)`
 
     my $index   = 0;
     my $package = get_package($index);
 
-Return the [CPUInfo::FFI::Package](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3APackage) package object at index `$index`.
+Return the [Lib::CPUInfo::Package](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3APackage) package object at index `$index`.
 
 ## `get_uarch($index)`
 
     my $index     = 0;
     my $uarchinfo = get_uarch($index);
 
-Return the [CPUInfo::FFI::UArchInfo](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AUArchInfo) uarch object at index `$index`.
+Return the [Lib::CPUInfo::UArchInfo](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3AUArchInfo) uarch object at index `$index`.
 
 ## `get_l1i_cache($index)`
 
     my $index = 0;
     my $cache = get_l1i_cache($index);
 
-Return the [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache) L1i cache object at index `$index`.
+Return the [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache) L1i cache object at index `$index`.
 
 ## `get_l1d_cache($index)`
 
     my $index = 0;
     my $cache = get_l1d_cache($index);
 
-Return the [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache) L1d cache object at index `$index`.
+Return the [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache) L1d cache object at index `$index`.
 
 ## `get_l2_cache($index)`
 
     my $index = 0;
     my $cache = get_l2_cache($index);
 
-Return the [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache) L2 cache object at index `$index`.
+Return the [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache) L2 cache object at index `$index`.
 
 ## `get_l3_cache($index)`
 
     my $index = 0;
     my $cache = get_l3_cache($index);
 
-Return the [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache) L3 cache object at index `$index`.
+Return the [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache) L3 cache object at index `$index`.
 
 ## `get_l4_cache($index)`
 
     my $index = 0;
     my $cache = get_l4_cache($index);
 
-Return the [CPUInfo::FFI::Cache](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACache) L4 cache object at index `$index`.
+Return the [Lib::CPUInfo::Cache](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACache) L4 cache object at index `$index`.
 
 ## `get_max_cache_size`
 
@@ -308,13 +308,13 @@ Get the current UArch index, I guess?
 
     my $core = get_current_core();
 
-Get the current [CPUInfo::FFI::Core](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3ACore) core object.
+Get the current [Lib::CPUInfo::Core](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3ACore) core object.
 
 ## `get_current_processor`
 
     my $processor = get_current_processor();
 
-Get the current [CPUInfo::FFI::Processor](https://metacpan.org/pod/CPUInfo%3A%3AFFI%3A%3AProcessor) processor object.
+Get the current [Lib::CPUInfo::Processor](https://metacpan.org/pod/Lib%3A%3ACPUInfo%3A%3AProcessor) processor object.
 
 # BENCHMARKS
 
@@ -322,8 +322,8 @@ Get the current [CPUInfo::FFI::Processor](https://metacpan.org/pod/CPUInfo%3A%3A
 
     Loops: 1,000.
 
-        CPUInfo::FFI:           Ran 21 iterations (1 outliers).
-        CPUInfo::FFI:           Rounded run time per iteration: 4.163e-04 +/- 1.5e-06 (0.4%)
+        Lib::CPUInfo:           Ran 21 iterations (1 outliers).
+        Lib::CPUInfo:           Rounded run time per iteration: 4.163e-04 +/- 1.5e-06 (0.4%)
 
         Sys::Info::Device::CPU: Ran 25 iterations (5 outliers).
         Sys::Info::Device::CPU: Rounded run time per iteration: 9.4582e-01 +/- 2.9e-04 (0.0%)
@@ -335,8 +335,8 @@ Get the current [CPUInfo::FFI::Processor](https://metacpan.org/pod/CPUInfo%3A%3A
 
     Loops: 1,000.
 
-        CPUInfo::FFI:           Ran 23 iterations (3 outliers).
-        CPUInfo::FFI:           Rounded run time per iteration: 1.2206e-02 +/- 1.3e-05 (0.1%)
+        Lib::CPUInfo:           Ran 23 iterations (3 outliers).
+        Lib::CPUInfo:           Rounded run time per iteration: 1.2206e-02 +/- 1.3e-05 (0.1%)
 
         Sys::Info::Device::CPU: Ran 23 iterations (3 outliers).
         Sys::Info::Device::CPU: Rounded run time per iteration: 9.6313e-01 +/- 1.0e-03 (0.1%)

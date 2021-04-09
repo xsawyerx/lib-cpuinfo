@@ -11,7 +11,7 @@ use Sys::Info;
 use Rex::Inventory::Proc;
 use Linux::Cpuinfo;
 use Linux::Info::CpuStats;
-use CPUInfo::FFI qw<
+use Lib::CPUInfo qw<
     initialize
     deinitialize
     get_current_core
@@ -33,7 +33,7 @@ my $bench = Dumbbench->new(
 
 $bench->add_instances(
     Dumbbench::Instance::PerlSub->new(
-        'name' => 'CPUInfo::FFI',
+        'name' => 'Lib::CPUInfo',
         'code' => sub {
             for ( 1 .. MAX_RUN() ) {
                 initialize();
@@ -80,7 +80,7 @@ my $bench = Dumbbench->new(
 
 $bench->add_instances(
     Dumbbench::Instance::PerlSub->new(
-        'name' => 'CPUInfo::FFI',
+        'name' => 'Lib::CPUInfo',
         'code' => sub {
             for ( 1 .. MAX_RUN() ) {
                 initialize();

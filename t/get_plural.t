@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use Test::More 'tests' => 2 + 6;
 use Test::Fatal qw< exception >;
-use CPUInfo::FFI qw<
+use Lib::CPUInfo qw<
     initialize
     deinitialize
     get_processors
@@ -45,7 +45,7 @@ subtest( 'Processors' => sub {
     my $procs = get_processors();
     isa_ok( $procs, 'ARRAY' );
 
-    isa_ok( $_, 'CPUInfo::FFI::Processor' )
+    isa_ok( $_, 'Lib::CPUInfo::Processor' )
         for $procs->@*;
 });
 
@@ -53,7 +53,7 @@ subtest( 'Cores' => sub {
     my $cores = get_cores();
     isa_ok( $cores, 'ARRAY' );
 
-    isa_ok( $_, 'CPUInfo::FFI::Core' )
+    isa_ok( $_, 'Lib::CPUInfo::Core' )
         for $cores->@*;
 });
 
@@ -61,7 +61,7 @@ subtest( 'Clusters' => sub {
     my $clusters = get_clusters();
     isa_ok( $clusters, 'ARRAY' );
 
-    isa_ok( $_, 'CPUInfo::FFI::Cluster' )
+    isa_ok( $_, 'Lib::CPUInfo::Cluster' )
         for $clusters->@*;
 });
 
@@ -69,7 +69,7 @@ subtest( 'Packages' => sub {
     my $packages = get_packages();
     isa_ok( $packages, 'ARRAY' );
 
-    isa_ok( $_, 'CPUInfo::FFI::Package' )
+    isa_ok( $_, 'Lib::CPUInfo::Package' )
         for $packages->@*;
 });
 
@@ -77,7 +77,7 @@ subtest( 'UArchInfos' => sub {
     my $uarch_infos = get_uarchs();
     isa_ok( $uarch_infos, 'ARRAY' );
 
-    isa_ok( $_, 'CPUInfo::FFI::UArchInfo' )
+    isa_ok( $_, 'Lib::CPUInfo::UArchInfo' )
         for $uarch_infos->@*;
 });
 
@@ -106,7 +106,7 @@ subtest( 'Caches' => sub {
                 next;
             }
 
-            isa_ok( $cache, 'CPUInfo::FFI::Cache' );
+            isa_ok( $cache, 'Lib::CPUInfo::Cache' );
         }
     }
 });
