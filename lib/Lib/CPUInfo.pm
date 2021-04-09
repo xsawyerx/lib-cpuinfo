@@ -526,6 +526,9 @@ L<here|https://github.com/pytorch/cpuinfo>.
 
 Why? Because.
 
+I had written it against Debian version 0.0~git20200422.a1e0b95-2. If you find
+differences, please report via GitHub and I'll do my best to handle it.
+
 =head1 FUNCTIONS
 
 The following functions are available:
