@@ -1,7 +1,7 @@
-requires( 'perl'          => '5.20' );
-requires( 'FFI::CheckLib' => '0.06' );
-requires( 'FFI::Platypus' => '1.43' );
-requires( 'FFI::C'        => '0.10' );
+requires( 'perl'          => 'v5.20' );
+requires( 'FFI::CheckLib' => '0.06'  );
+requires( 'FFI::Platypus' => '1.34'  );
+requires( 'FFI::C'        => '0.10'  );
 requires( 'POSIX'         => 0 );
 
 on( 'test' => sub {
