@@ -524,7 +524,9 @@ __END__
 This module implements an interface to PyTorch's C<libcpuinfo> available
 L<here|https://github.com/pytorch/cpuinfo>.
 
-Why? Because.
+Installing it on Debian and Debian-based distros:
+
+    apt install libcpuinfo0
 
 I had written it against Debian version 0.0~git20200422.a1e0b95-2. If you find
 differences, please report via GitHub and I'll do my best to handle it.
