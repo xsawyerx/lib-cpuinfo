@@ -46,6 +46,9 @@ Installing it on Debian and Debian-based distros:
 I had written it against Debian version 0.0~git20200422.a1e0b95-2. If you find
 differences, please report via GitHub and I'll do my best to handle it.
 
+If you have use for this and need an [Alien](https://metacpan.org/pod/Alien) module to install the library
+for you as a dependency, let me know.
+
 # FUNCTIONS
 
 The following functions are available:
