@@ -1,5 +1,5 @@
 package Lib::CPUInfo;
-# ABSTRACT: Interface to PyTorch's libcpuinfo C library
+# ABSTRACT: Perl interface to PyTorch's libcpuinfo C library
 
 ## no critic
 
