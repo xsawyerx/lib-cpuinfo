@@ -56,10 +56,19 @@ subtest( 'Processor' => sub {
     my $core = $proc->core();
     isa_ok( $core, 'Lib::CPUInfo::Core' );
 
+    $core = $proc->core();
+    isa_ok( $core, 'Lib::CPUInfo::Core' );
+
     my $cluster = $proc->cluster();
     isa_ok( $cluster, 'Lib::CPUInfo::Cluster' );
 
+    $cluster = $proc->cluster();
+    isa_ok( $cluster, 'Lib::CPUInfo::Cluster' );
+
     my $package = $proc->package();
+    isa_ok( $package, 'Lib::CPUInfo::Package' );
+
+    $package = $proc->package();
     isa_ok( $package, 'Lib::CPUInfo::Package' );
 
     # environment-specific arguments
@@ -101,6 +110,18 @@ subtest( 'Processor' => sub {
     foreach my $type ( qw< l1i l1d l2 l3 l4 > ) {
         my $cache = $proc->$type;
 
+        $cache = $proc->$type;
+
+        if ( !$cache ) {
+            is( $cache, undef, "Unable to get $type cache so it is undef" );
+            next;
+        }
+
+        isa_ok( $cache, 'Lib::CPUInfo::Cache' );
+
+        # Try again...
+        $cache = 0;
+        $cache = $proc->$type;
         if ( !$cache ) {
             is( $cache, undef, "Unable to get $type cache so it is undef" );
             next;
@@ -140,6 +161,16 @@ subtest( 'Core' => sub {
     isa_ok(
         $core->cluster(),
         'Lib::CPUInfo::Cluster',
+    );
+
+    isa_ok(
+        $core->cluster(),
+        'Lib::CPUInfo::Cluster',
+    );
+
+    isa_ok(
+        $core->package(),
+        'Lib::CPUInfo::Package',
     );
 
     isa_ok(
@@ -220,6 +251,7 @@ subtest( 'Cluster' => sub {
         "cluster->cluster_id() ($int)",
     );
 
+    isa_ok( $cluster->package(), 'Lib::CPUInfo::Package' );
     isa_ok( $cluster->package(), 'Lib::CPUInfo::Package' );
 
     my $vendor = $cluster->vendor();

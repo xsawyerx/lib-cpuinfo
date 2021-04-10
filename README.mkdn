@@ -346,6 +346,15 @@ Get the current [Lib::CPUInfo::Processor](https://metacpan.org/pod/Lib%3A%3ACPUI
         Sys::Info::Device::CPU: Ran 23 iterations (3 outliers).
         Sys::Info::Device::CPU: Rounded run time per iteration: 9.6313e-01 +/- 1.0e-03 (0.1%)
 
+# COVERAGE
+
+    -------------- ------ ------ ------ ------ ------ ------ ------
+    File             stmt   bran   cond    sub    pod   time  total
+    -------------- ------ ------ ------ ------ ------ ------ ------
+    Lib/CPUInfo.pm  100.0    n/a   63.6  100.0  100.0  100.0   93.5
+    Total           100.0    n/a   63.6  100.0  100.0  100.0   93.5
+    -------------- ------ ------ ------ ------ ------ ------ ------
+
 # SEE ALSO
 
 This module uses [FFI::Platypus](https://metacpan.org/pod/FFI%3A%3APlatypus) to connect to the C library and

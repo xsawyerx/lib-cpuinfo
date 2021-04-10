@@ -835,6 +835,15 @@ Loops: 1,000.
 
 =back
 
+=head1 COVERAGE
+
+    -------------- ------ ------ ------ ------ ------ ------ ------
+    File             stmt   bran   cond    sub    pod   time  total
+    -------------- ------ ------ ------ ------ ------ ------ ------
+    Lib/CPUInfo.pm  100.0    n/a   63.6  100.0  100.0  100.0   93.5
+    Total           100.0    n/a   63.6  100.0  100.0  100.0   93.5
+    -------------- ------ ------ ------ ------ ------ ------ ------
+
 =head1 SEE ALSO
 
 This module uses L<FFI::Platypus> to connect to the C library and
